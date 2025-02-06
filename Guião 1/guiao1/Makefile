@@ -10,5 +10,5 @@ exercicios.o: exercicios.c exercicios.h
 guiao1.o: guiao1.c exercicios.h
 
 clean:
-	rm -f *.o guiao1 pessoas file_pessoas
+	rm -f *.o guiao1 pessoas file_pessoas ficheiroBinario
 
