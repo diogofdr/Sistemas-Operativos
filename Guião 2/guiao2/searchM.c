@@ -199,7 +199,7 @@ void exercicio7() {
             // Processo filho
             FILE *file = fopen("matriz.bin", "rb");
             if (!file) {
-                perror("fopen");
+               perror("fopen");
                 _exit(1);
             }
             fseek(file, i * COLUMNS * sizeof(int), SEEK_SET);
@@ -208,17 +208,17 @@ void exercicio7() {
             fclose(file);
 
             // Pesquisa o número na linha
+            int found = 0;
             for (int j = 0; j < COLUMNS; j++) {
                 if (row[j] == number) {
-                    printf("Número %d encontrado na linha %d\n", number, i);
-                    _exit(0);  // Termina o processo filho
+                    printf("Número %d encontrado na linha %d, posição %d\n", number, i, j);
+                    found = 1;
+                    //_exit(0);  // Termina o processo filho
                 }
             }
+            if(found!=0) _exit(0); // Cenario de numero encontrado
             printf("Número %d não encontrado na linha %d\n", number, i);
             _exit(0);  // Termina o processo filho
-        } else if (pid < 0) {
-            perror("fork");
-            return;
         }
     }
 
